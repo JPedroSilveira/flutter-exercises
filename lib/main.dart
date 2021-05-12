@@ -28,17 +28,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _counter = 0;
+  int _counter_button_1 = 0;
+  int _counter_button_2 = 0;
 
-  void _decrementCounter() {
+  void _incrementCounterOne() {
     setState(() {
-      _counter--;
+      _counter_button_1++;
     });
   }
 
-  void _incrementCounter() {
+  void _incrementCounterTwo() {
     setState(() {
-      _counter++;
+      _counter_button_2++;
     });
   }
 
@@ -58,10 +59,17 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              'You have pushed the button 1 this many times:',
             ),
             Text(
-              '$_counter',
+              '$_counter_button_1',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+            Text(
+              'You have pushed the button 2 this many times:',
+            ),
+            Text(
+              '$_counter_button_2',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
@@ -71,14 +79,14 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           FloatingActionButton(
-            onPressed: _decrementCounter,
-            tooltip: 'Decrement',
-            child: Icon(Icons.remove_circle),
+            onPressed: _incrementCounterOne,
+            tooltip: 'Increment One',
+            child: Icon(Icons.add),
           ),
           FloatingActionButton(
-            onPressed: _incrementCounter,
-            tooltip: 'Increment',
-            child: Icon(Icons.add_circle),
+            onPressed: _incrementCounterTwo,
+            tooltip: 'Increment Two',
+            child: Icon(Icons.add),
           ),
         ],
       ),
