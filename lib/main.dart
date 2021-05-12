@@ -11,10 +11,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.lightGreen,
-        scaffoldBackgroundColor: Colors.lightGreen.shade100,
+        primarySwatch: Colors.blue,
       ),
-      home: HomePage(title: 'Flutter Still Second Demo Home Page'),
+      home: HomePage(title: 'Bid Demo Home Page'),
     );
   }
 }
@@ -28,18 +27,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _counter_button_1 = 0;
-  int _counter_button_2 = 0;
+  double bid = 0;
 
-  void _incrementCounterOne() {
+  void _increaseBid() {
     setState(() {
-      _counter_button_1++;
-    });
-  }
-
-  void _incrementCounterTwo() {
-    setState(() {
-      _counter_button_2++;
+      bid+= 50;
     });
   }
 
@@ -50,7 +42,7 @@ class _HomePageState extends State<HomePage> {
         title: Text(
           widget.title, 
           style: TextStyle(fontWeight: FontWeight.bold), 
-          textAlign: TextAlign.center, 
+          textAlign: TextAlign.start, 
           textScaleFactor: 0.9
         ),
       ),
@@ -59,36 +51,26 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button 1 this many times:',
+              'My Maximum Bid: ${bid.toStringAsFixed(1)}',
             ),
-            Text(
-              '$_counter_button_1',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            Text(
-              'You have pushed the button 2 this many times:',
-            ),
-            Text(
-              '$_counter_button_2',
-              style: Theme.of(context).textTheme.headline4,
+            SizedBox(height: 7),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                  child: Row(
+                    children: [
+                      Icon(Icons.add_circle, color: Colors.black),
+                      SizedBox(width: 7),
+                      Text('Increase Bid', style: TextStyle(color: Colors.black)),
+                     ],
+                  ),
+                  onPressed: _increaseBid
+                ),
+              ],
             ),
           ],
         ),
-      ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          FloatingActionButton(
-            onPressed: _incrementCounterOne,
-            tooltip: 'Increment One',
-            child: Icon(Icons.add),
-          ),
-          FloatingActionButton(
-            onPressed: _incrementCounterTwo,
-            tooltip: 'Increment Two',
-            child: Icon(Icons.add),
-          ),
-        ],
       ),
     );
   }
