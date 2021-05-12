@@ -8,11 +8,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.lightGreen,
+        scaffoldBackgroundColor: Colors.lightGreen.shade100,
       ),
-      home: HomePage(title: 'Flutter Demo Home Page'),
+      home: HomePage(title: 'Flutter Still Second Demo Home Page'),
     );
   }
 }
@@ -44,7 +46,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(
+          widget.title, 
+          style: TextStyle(fontWeight: FontWeight.bold), 
+          textAlign: TextAlign.center, 
+          textScaleFactor: 0.9
+        ),
       ),
       body: Center(
         child: Column(
@@ -60,18 +67,18 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      floatingActionButton: Column(
+      floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           FloatingActionButton(
             onPressed: _decrementCounter,
             tooltip: 'Decrement',
-            child: Icon(Icons.exposure_minus_1),
+            child: Icon(Icons.remove_circle),
           ),
           FloatingActionButton(
             onPressed: _incrementCounter,
             tooltip: 'Increment',
-            child: Icon(Icons.exposure_plus_1),
+            child: Icon(Icons.add_circle),
           ),
         ],
       ),
