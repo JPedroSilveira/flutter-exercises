@@ -1,5 +1,4 @@
 import 'package:activity_one/main.dart';
-import 'package:activity_one/view/bid_view.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
